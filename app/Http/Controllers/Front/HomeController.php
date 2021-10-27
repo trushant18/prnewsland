@@ -14,6 +14,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        dd(121);
         return view('front.home.index');
     }
 

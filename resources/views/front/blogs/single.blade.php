@@ -1,4 +1,7 @@
 @extends('front.layout.master')
+@section('schema')
+    {{ $blog->schema ?? "" }}
+@endsection
 @section('content')
     <section class="page-content bb-0">
         <div class="single-post-meta">

@@ -24,6 +24,12 @@
                 {!! Form::textarea('content', $blog->content ?? old('content'), ['class' => 'form-control wysiwyg_editor']) !!}
             </div>
         </div>
+        <div class="col-lg-12">
+            <div class="form-group">
+                <label class="form-control-label">Schema: </label>
+                {!! Form::textarea('schema', $blog->schema ?? old('schema'), ['class' => 'form-control', 'placeholder' => 'Enter Schema Script']) !!}
+            </div>
+        </div>
         <div class="col-lg-4">
             <div class="form-group">
                 <label class="form-control-label">Image: <span class="tx-danger">*</span></label>

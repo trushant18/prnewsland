@@ -12,10 +12,9 @@
     <link rel="icon" href="{{ url('front/images/favicon.png') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('front/assets/css/main.min.css') }}">
     @yield('css')
+    @yield('schema')
 </head>
-
 <body>
-
 <div class="wrapper">
     @include('front.layout.partials.header')
     @yield('content')

@@ -49,6 +49,5 @@
 </script>
 @yield('footer_scripts')
 <script src="{{ asset('admin/js/global.js') }}"></script>
-<script src="{{ asset('admin/theme/js/slim.js') }}"></script>
 </body>
 </html>
