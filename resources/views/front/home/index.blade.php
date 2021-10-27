@@ -6,10 +6,10 @@
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="banner-txt-v8 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0ms">
-                            <h2>Boost your business up to high level</h2>
+                            <h2>Turn your piece of news into a press release with PRNews Land </h2>
                             <p>Like any great agency, we are only as good as the result we deliver of our recent
                                 work</p>
-                            <a href="#" title="" class="btn-default-v8">Get Started</a>
+                            <a href="https://prnewsland.com/login" title="" class="btn-default-v8">Get Started</a>
                         </div><!--banner-txt end-->
                         <div class="banner-wid">
                             <p>If you're hurry, quick call for us. Our supporters alway 24/7 and will help you asap </p>

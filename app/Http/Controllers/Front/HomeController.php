@@ -23,7 +23,11 @@ class HomeController extends Controller
             return redirect()->route('home');
         }
         $pageDetails = Page::where('type', $page_type)->first();
-        return view('front.page_content', compact('page_type', 'pageDetails'));
+        if(isset($pageDetails)){
+            return view('front.page_content', compact('page_type', 'pageDetails'));
+        }else{
+            return redirect()->route('home');
+        }
     }
 
     public function getPricingList()

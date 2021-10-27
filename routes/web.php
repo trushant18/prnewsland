@@ -62,6 +62,6 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('press-releases', [UserController::class, 'myPressReleases'])->name('user.press_releases');
     });
 
-    Route::get('page/{slug}', [HomeController::class, 'getPageDetails'])->name('page.detail');
+    Route::get('{slug}', [HomeController::class, 'getPageDetails'])->name('page.detail');
 });
 
