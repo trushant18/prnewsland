@@ -11,6 +11,7 @@ class CreateCustomDirectories extends Command
     const DIRECTORY_PATH = [
         'app/public/blog' => 'blog',
         'app/public/user' => 'user',
+        'app/public/news' => 'news',
     ];
 
     protected $signature = 'create:uploadable_directories';

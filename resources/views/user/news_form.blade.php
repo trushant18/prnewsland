@@ -16,29 +16,30 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-4">Basic Form Elements</h4>
-                        <form class="forms-sample">
+                        <form method="POST" action="{{ route('news.store') }}" accept-charset="UTF-8"
+                              class="forms-sample" enctype="multipart/form-data">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Select category</label>
-                                        <select class="form-control" id="">
-                                            <option value="Category01">Category01</option>
-                                            <option value="Category02">Category02</option>
-                                            <option value="Category03">Category03</option>
-                                            <option value="Category04">Category04</option>
+                                        <select class="form-control" id="" name="category" required>
+                                            @foreach(\App\Models\News::CATEGORIES as $key => $value)
+                                                <option value="{{ $key }}">{{ $value }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Upload Featured Image (main)</label>
-                                        <input type="file" name="img[]" class="file-upload-default">
+                                        <input type="file" name="image" class="file-upload-default">
                                         <div class="input-group col-xs-12">
                                             <input type="text" class="form-control file-upload-info" disabled=""
                                                    placeholder="Upload Image">
                                             <span class="input-group-append">
-                                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                              </span>
+                                                <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                              </span>
                                         </div>
                                         <small class="text-muted">Recommended Size 1200x620</small>
                                     </div>
@@ -48,7 +49,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Title <span class="require">*</span></label>
-                                        <input type="text" class="form-control" id="" placeholder="Title here..."
+                                        <input type="text" name="title" class="form-control" id="" placeholder="Title here..."
                                                required>
                                         <small class="text-muted">Write a creative title</small>
                                     </div>
@@ -56,7 +57,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">City / State <span class="require">*</span></label>
-                                        <input type="text" class="form-control" id="" placeholder="City / State here..."
+                                        <input type="text" name="city" class="form-control" id="" placeholder="City / State here..."
                                                required>
                                         <small class="text-muted">City or State for which the press release is
                                             concerned.</small>

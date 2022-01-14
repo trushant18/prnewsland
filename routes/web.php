@@ -57,6 +57,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('password/update', [UserController::class, 'updatePassword'])->name('user.password.update');
 
         Route::get('news/create', [UserController::class, 'newsCreateForm'])->name('news.create');
+        Route::post('news/store', [UserController::class, 'storeNews'])->name('news.store');
 
         Route::get('draft-releases', [UserController::class, 'myDraftReleases'])->name('user.draft_releases');
         Route::get('press-releases', [UserController::class, 'myPressReleases'])->name('user.press_releases');

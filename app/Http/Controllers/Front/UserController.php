@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -54,6 +55,22 @@ class UserController extends Controller
     {
         $user = auth()->user();
         return view('user.news_form', compact('user'));
+    }
+
+    public function storeNews(Request $request)
+    {
+        $requestData = $request->all();
+        $user = auth()->user();
+        $requestData['user_id'] = $user->id;
+        if (isset($requestData['image'])){
+            $file = $requestData['image'];
+            $uploadPath = storage_path(User::IMG_PATH);
+            $extension = $file->getClientOriginalExtension();
+            $requestData['image'] = rand(11111, 99999) . '.' . $extension;
+            $file->move($uploadPath, $requestData['image']);
+        }
+        News::crete($requestData);
+        return route('user.press_releases');
     }
 
     public function myDraftReleases()
