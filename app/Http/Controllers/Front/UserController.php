@@ -118,6 +118,7 @@ class UserController extends Controller
     public function myDraftReleases()
     {
         $user = auth()->user();
-        return view('user.draft_releases', compact('user'));
+        $news_list = News::where('user_id', $user->id)->where('status', 3)->orderBy('id', 'DESC')->paginate(10);
+        return view('user.draft_releases', compact('user', 'news_list'));
     }
 }

@@ -20,7 +20,7 @@ class NewsController extends Controller
 
     public function index()
     {
-        $news_list = News::orderBy('id', 'DESC')->get();
+        $news_list = News::where('status', '!=', 3)->orderBy('id', 'DESC')->get();
         return view('admin.news.index', compact('news_list'));
     }
 

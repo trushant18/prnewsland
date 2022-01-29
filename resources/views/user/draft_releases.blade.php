@@ -16,65 +16,47 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-5">Recently drafted press releases
-                            <a class="float-right btn btn-primary btn-sm" href="{{ route('user.dashboard') }}">Submit press releases</a></h4>
-                        <div class="table-responsive">
-                            <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Publish date</th>
-                                    <th>Dateline City</th>
-                                    <th>Category</th>
-                                    <th>Status</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>New business</td>
-                                    <td>Dec 5, 2017</td>
-                                    <td>Mumbai</td>
-                                    <td>New business</td>
-                                    <td><label class="badge badge-warning">Pending</label></td>
-                                </tr>
-                                <tr>
-                                    <td>New hire</td>
-                                    <td>Dec 5, 2017</td>
-                                    <td>Delhi</td>
-                                    <td>New hire</td>
-                                    <td><label class="badge badge-warning">Pending</label></td>
-                                </tr>
-                                <tr>
-                                    <td>Book release</td>
-                                    <td>Dec 5, 2017</td>
-                                    <td>Bangalore</td>
-                                    <td>Book release</td>
-                                    <td><label class="badge badge-warning">Pending</label></td>
-                                </tr>
-                                <tr>
-                                    <td>Rebranding</td>
-                                    <td>Dec 5, 2017</td>
-                                    <td>Ahmedabad</td>
-                                    <td>Rebranding</td>
-                                    <td><label class="badge badge-warning">Pending</label></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination justify-content-center mt-4">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active" aria-current="page">
-                                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
+                            <a class="float-right btn btn-primary btn-sm" href="{{ route('user.dashboard') }}">Submit
+                                press releases</a></h4>
+                        @if(count($news_list) > 0)
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Publish date</th>
+                                        <th>Dateline City</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($news_list as $news)
+                                        <tr>
+                                            <td>{{ $news->title }}</td>
+                                            <td>{{ formatDate($news->created_at) }}</td>
+                                            <td>{{ $news->city }}</td>
+                                            <td>{{ \App\Models\News::CATEGORIES[$news->category] }}</td>
+                                            <td>
+                                                <label class="badge badge-warning">Pending</label>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <nav aria-label="Page navigation">
+                                <div class="pagination justify-content-center">
+                                    {!! $news_list->links("pagination::bootstrap-4") !!}
+                                </div>
+                            </nav>
+                        @else
+                            <div class="row justify-content-center">
+                                <div class="col-sm-12 ">
+                                    No Record Found.
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
