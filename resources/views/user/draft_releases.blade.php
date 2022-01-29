@@ -5,8 +5,8 @@
             <h3 class="page-title">My draf releases</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">My draf releases</li>
+                    <li class="breadcrumb-item"><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">My Draft Releases</li>
                 </ol>
             </nav>
         </div>
@@ -15,7 +15,8 @@
             <div class="col-12 grid-margin">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-5">Recently drafted press releases <a class="float-right btn btn-primary btn-sm" href="#">Submit press releases</a></h4>
+                        <h4 class="card-title mb-5">Recently drafted press releases
+                            <a class="float-right btn btn-primary btn-sm" href="{{ route('user.dashboard') }}">Submit press releases</a></h4>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>

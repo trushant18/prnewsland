@@ -20,6 +20,7 @@
                 </a>
                 <div class="sub-item">
                     <ul>
+                        <li><a href="{{ route('admin.news') }}">News List</a></li>
                         <li><a href="{{ route('admin.blog') }}">Our Blog</a></li>
                         <li><a href="{{ route('admin.plans') }}">Price Plans</a></li>
                     </ul>

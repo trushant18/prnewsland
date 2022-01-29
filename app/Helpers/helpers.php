@@ -27,6 +27,11 @@ function showBlogImage($image_name)
     return url(\App\Models\Blog::IMG_URL . $image_name);
 }
 
+function showNewsImage($image_name)
+{
+    return url(\App\Models\News::IMG_URL . $image_name);
+}
+
 function showUserImage($image_name)
 {
     return url(\App\Models\User::IMG_URL . $image_name);

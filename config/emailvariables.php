@@ -8,4 +8,17 @@ return [
         'NAME' => 'Name of the User',
         'RESET_LINK' => 'Reset Link of the User',
     ],
+    'news_approval_mail_to_admin' => [
+        'NAME' => 'Name of the User',
+        'NEWS_TITLE' => 'News Title',
+    ],
+    'news_approved_mail_to_user' => [
+        'NAME' => 'Name of the User',
+        'NEWS_TITLE' => 'News Title',
+    ],
+    'news_rejected_mail_to_user' => [
+        'NAME' => 'Name of the User',
+        'NEWS_TITLE' => 'News Title',
+        'REASON' => 'Reason for new rejection',
+    ],
 ];

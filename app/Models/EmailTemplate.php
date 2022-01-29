@@ -11,7 +11,10 @@ class EmailTemplate extends Model
 
     const EMAIL_EVENTS = [
         "user_register_activation" => "User Register Activation",
-        "user_reset_password" => "User Reset Password"
+        "user_reset_password" => "User Reset Password",
+        "news_approval_mail_to_admin" => "Send News Approval Mail To Admin",
+        "news_approved_mail_to_user" => "News Approved Mail To User",
+        "news_rejected_mail_to_user" => "News Rejected Mail To User",
     ];
 
     protected $primaryKey = 'id';

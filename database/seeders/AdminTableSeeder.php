@@ -18,7 +18,7 @@ class AdminTableSeeder extends Seeder
         DB::table('admins')->insert([
             'name' => 'Kishan Patel',
             'email' => 'kishan.urvam@gmail.com',
-            'password' => bcrypt('123456xyz'),
+            'password' => bcrypt('123456'),
             'status' => '1',
             'created_at' => \Carbon\Carbon::now(),
         ]);

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\NewsletterController;
 use App\Http\Controllers\ContactRequestController;
+use App\Http\Controllers\Admin\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('page/edit/{id}', [PageController::class, 'edit'])->name('page.edit');
     Route::post('page/update/{id}', [PageController::class, 'update'])->name('page.update');
     Route::get('page/delete/{id}', [PageController::class, 'delete'])->name('page.delete');
+
+    /*NEWS ROUTES*/
+    Route::get('news', [NewsController::class, 'index'])->name('news');
+    Route::get('news/details/{id}', [NewsController::class, 'details'])->name('news.details');
+    Route::get('news/approve/{id}', [NewsController::class, 'approve'])->name('news.approve');
+    Route::post('news/reject', [NewsController::class, 'reject'])->name('news.reject');
 
     /*EMAIL TEMPLATE ROUTES*/
     Route::get('email_templates', [EmailTemplateController::class, 'index'])->name('email_templates');

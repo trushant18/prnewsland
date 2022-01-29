@@ -2,14 +2,19 @@
 
 namespace App\Providers;
 
+use App\EventListeners\NewsApprovalMailToAdminEventListener;
+use App\EventListeners\NewsApprovedMailToUserEventListener;
+use App\EventListeners\NewsRejectedMailToUserEventListener;
 use App\EventListeners\SendResetPasswordMailEventListener;
 use App\EventListeners\UserActivationMailEventListener;
+use App\Events\NewsApprovalMailToAdminEvent;
+use App\Events\NewsApprovedMailToUserEvent;
+use App\Events\NewsRejectedMailToUserEvent;
 use App\Events\SendResetPasswordMailEvent;
 use App\Events\UserActivationMailEvent;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -27,6 +32,15 @@ class EventServiceProvider extends ServiceProvider
         ],
         SendResetPasswordMailEvent::class => [
             SendResetPasswordMailEventListener::class,
+        ],
+        NewsApprovalMailToAdminEvent::class => [
+            NewsApprovalMailToAdminEventListener::class,
+        ],
+        NewsApprovedMailToUserEvent::class => [
+            NewsApprovedMailToUserEventListener::class,
+        ],
+        NewsRejectedMailToUserEvent::class => [
+            NewsRejectedMailToUserEventListener::class,
         ],
     ];
 

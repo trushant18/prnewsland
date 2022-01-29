@@ -25,20 +25,33 @@
         <div class="row dashCard">
             @foreach($plans as $plan)
                 <div class="col-md-4 stretch-card grid-margin">
-                    <a href="{{ route('news.create') }}" class="card @if($loop->odd) bg-gradient-success @else bg-gradient-danger @endif card-img-holder text-white">
-                        <div class="card-body">
-                            <img src="{{ url('user/images/circle.png') }}" class="card-img-absolute"
-                                 alt="circle-image"/>
-                            <h4 class="font-weight-normal mb-3">Press releases <i
-                                    class="mdi mdi-bookmark-check mdi-24px float-right"></i></h4>
-                            @if($plan->price == 0)
+                    @if($plan->price == 0)
+                        <a href="{{ route('news.create') }}"
+                           class="card @if($loop->odd) bg-gradient-success @else bg-gradient-danger @endif card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="{{ url('user/images/circle.png') }}" class="card-img-absolute"
+                                     alt="circle-image"/>
+                                <h4 class="font-weight-normal mb-3">Press releases <i
+                                            class="mdi mdi-bookmark-check mdi-24px float-right"></i></h4>
+
                                 <h2 class="mb-5">Free</h2>
-                            @else
+                                <h6 class="card-text">{{ $plan->content }}</h6>
+                            </div>
+                        </a>
+                    @else
+                        <a href="{{ route('news.create.paid', $plan->id) }}"
+                           class="card @if($loop->odd) bg-gradient-success @else bg-gradient-danger @endif card-img-holder text-white">
+                            <div class="card-body">
+                                <img src="{{ url('user/images/circle.png') }}" class="card-img-absolute"
+                                     alt="circle-image"/>
+                                <h4 class="font-weight-normal mb-3">Press releases <i
+                                            class="mdi mdi-bookmark-check mdi-24px float-right"></i></h4>
+
                                 <h2 class="mb-5">Paid <small>{{ $plan->price }}$</small></h2>
-                            @endif
-                            <h6 class="card-text">{{ $plan->content }}</h6>
-                        </div>
-                    </a>
+                                <h6 class="card-text">{{ $plan->content }}</h6>
+                            </div>
+                        </a>
+                    @endif
                 </div>
             @endforeach
 

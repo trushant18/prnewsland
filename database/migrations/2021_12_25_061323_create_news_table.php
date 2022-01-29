@@ -18,10 +18,13 @@ class CreateNewsTable extends Migration
             $table->integer('user_id');
             $table->integer('category');
             $table->string('title')->nullable();
+            $table->string('slug')->nullable();
             $table->string('city')->nullable();
             $table->string('country')->nullable();
             $table->text('content')->nullable();
+            $table->text('reject_reason')->nullable();
             $table->text('image')->nullable();
+            $table->double('price', 8, 2)->default(0);
             $table->boolean('is_free')->default(0);
             $table->integer('status')->default(0);
             $table->timestamps();
