@@ -6,9 +6,8 @@
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="banner-txt-v8 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0ms">
-                            <h2>Turn your piece of news into a press release with PRNews Land </h2>
-                            <p>Like any great agency, we are only as good as the result we deliver of our recent
-                                work</p>
+                            <h2>Turn your piece of news into a press release with PR News Land </h2>
+                            <p>Press Release Publication & Distribution Media </p>
                             <a href="https://prnewsland.com/login" title="" class="btn-default-v8">Get Started</a>
                         </div><!--banner-txt end-->
                         <div class="banner-wid">
@@ -242,7 +241,8 @@
                                             <li>{{ \App\Models\News::CATEGORIES[$news->category] }}</li>
                                             <li>{{ formatDate($news->created_at, 'M d, Y') }}</li>
                                         </ul>
-                                        <h2><a href="{{ route('news.detail', $news->slug) }}" title="">{{ $news->title }}</a></h2>
+                                        <h2><a href="{{ route('news.detail', $news->slug) }}"
+                                               title="">{{ $news->title }}</a></h2>
                                         {{--<ul class="meta2">
                                             <li><i class="lni lni-comments"></i> 25</li>
                                             <li><i class="lni lni-eye"></i> 32.6K</li>
