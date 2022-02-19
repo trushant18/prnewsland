@@ -2,11 +2,11 @@
 @section('content')
     <div class="content-wrapper">
         <div class="page-header">
-            <h3 class="page-title">Start writing your press release</h3>
+            <h3 class="page-title">Edit Draft News</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('user.dashboard') }}">Dashboard</a></li>
-                    @if($paid_news)
+                    @if($news->is_free == 0)
                         <li class="breadcrumb-item active" aria-current="page">Paid</li>
                     @else
                         <li class="breadcrumb-item active" aria-current="page">Free</li>
@@ -19,9 +19,8 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title mb-4">Basic Form Elements</h4>
                         @include('admin.layout.partials.flash_messages')
-                        <form method="POST" action="{{ route('news.store') }}" accept-charset="UTF-8"
+                        <form method="POST" action="{{ route('news.update', $news->id) }}" accept-charset="UTF-8"
                               class="forms-sample" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -30,18 +29,18 @@
                                         <label for="">Select category</label>
                                         <select class="form-control" id="" name="category" required>
                                             @foreach(\App\Models\News::CATEGORIES as $key => $value)
-                                                <option value="{{ $key }}">{{ $value }}</option>
+                                                <option value="{{ $key }}" @if($news->category == $key) selected @endif>{{ $value }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <input type="hidden" name="is_free" value="{{ $paid_news ? 0 : 1 }}">
-                                <input type="hidden" name="price" value="{{ $price }}">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Upload Featured Image (main)</label>
                                         <input type="file" accept="image/*" class="dropify" data-show-remove="false"
-                                               data-allowed-file-extensions="png jpg jpeg svg" required name="image" id="image">
+                                               data-allowed-file-extensions="png jpg jpeg svg"
+                                               @if(isset($news) && ($news->image != "")) data-default-file="{{ showNewsImage($news->image) }}" @endif
+                                               name="image" id="image">
                                         <small class="text-muted">Recommended Size 1200x620</small>
                                     </div>
                                 </div>
@@ -50,7 +49,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Title <span class="require">*</span></label>
-                                        <input type="text" name="title" class="form-control" id="title"
+                                        <input type="text" name="title" class="form-control" id="title" value="{{ $news->title }}"
                                                placeholder="Title here..."
                                                required>
                                         <small class="text-muted">Write a creative title</small>
@@ -59,9 +58,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">Slug <span class="require">*</span></label>
-                                        <input type="text" name="slug" class="form-control" id="slug"
-                                               placeholder="New URL here..."
-                                               required>
+                                        <input type="text" class="form-control" id="slug" disabled value="{{ $news->slug }}">
                                         <small class="text-muted">Write a slug fro URL</small>
                                     </div>
                                 </div>
@@ -71,35 +68,31 @@
                                     <div class="form-group">
                                         <label for="">Add Content <span class="require">*</span></label>
                                         <textarea name="content" class="form-control wysiwyg_editor" id=""
-                                                  placeholder="Enter Content"></textarea>
+                                                  placeholder="Enter Content">{{ $news->content }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="">City / State <span class="require">*</span></label>
                                         <input type="text" name="city" class="form-control" id=""
-                                               placeholder="City / State here..."
+                                               placeholder="City / State here..." value="{{ $news->city }}"
                                                required>
                                         <small class="text-muted">City or State for which the press release is
                                             concerned.</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="">Country</label>
-                                        {!! Form::select('country', config('countries'), $user->country ?? old('country'), ['class' => 'form-control', 'placeholder' => 'Select Country']) !!}
-                                        <small class="text-muted">Country for whith the press release is
+                                        {!! Form::select('country', config('countries'), $news->country ?? old('country'), ['class' => 'form-control', 'placeholder' => 'Select Country']) !!}
+                                        <small class="text-muted">Country for with the press release is
                                             concerned.</small>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-right">
-                                    <button type="submit" class="btn btn-primary mr-2" name="button"
-                                            value="submit">Submit
+                                    <button type="submit" class="btn btn-primary mr-2">Update
                                     </button>
-                                    <button type="submit" class="btn btn-success mr-2" name="button"
-                                            value="saveAsDraft">Save As Draft
-                                    </button>
-                                    <a href="{{ route('user.dashboard') }}" class="btn btn-light">Cancel</a>
+                                    <a href="{{ route('user.draft_releases') }}" class="btn btn-light">Cancel</a>
                                 </div>
                             </div>
                         </form>

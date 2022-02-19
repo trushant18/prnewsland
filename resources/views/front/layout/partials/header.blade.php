@@ -11,7 +11,7 @@
                     <ul>
                         <li><a class="active" href="{{ route('page.detail', 'about-us') }}" title="">About</a></li>
                         <li><a href="{{ route('blogs') }}" title="">Blogs</a></li>
-                        <li><a href="#" title="">News</a></li>
+                        <li><a href="{{ route('news_list') }}" title="">News</a></li>
                         <li><a href="{{ route('pricing') }}" title="">Pricing</a></li>
                         <li><a href="{{ route('contact') }}" title="">Contact</a></li>
                     </ul>

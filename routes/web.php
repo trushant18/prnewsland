@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\DashboardController;
+use App\Http\Controllers\Front\PaymentController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactRequestController;
@@ -48,6 +49,9 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
     Route::get('/blog/{slug}', [BlogController::class, 'getBlogDetails'])->name('blog.detail');
 
+    Route::get('/news/all', [BlogController::class, 'getNewsList'])->name('news_list');
+    Route::get('/news/{slug}', [BlogController::class, 'getNewsDetails'])->name('news.detail');
+
     Route::group(['middleware' => ['users']], function () {
         Route::get('logout', [AuthController::class, 'logout'])->name('user.logout');
 
@@ -56,9 +60,16 @@ Route::group(['middleware' => 'web'], function () {
         Route::post('profile/update', [UserController::class, 'updateProfile'])->name('user.profile.update');
         Route::post('password/update', [UserController::class, 'updatePassword'])->name('user.password.update');
 
-        Route::get('news/create', [UserController::class, 'newsCreateForm'])->name('news.create');
-        Route::get('news/create/paid/{plan_id}', [UserController::class, 'newsCreateFormPaid'])->name('news.create.paid');
-        Route::post('news/store', [UserController::class, 'storeNews'])->name('news.store');
+        Route::get('news-form/create', [UserController::class, 'newsCreateForm'])->name('news.create');
+        Route::get('news-form/create/paid/{plan_id}', [UserController::class, 'newsCreateFormPaid'])->name('news.create.paid');
+        Route::post('news-form/store', [UserController::class, 'storeNews'])->name('news.store');
+        Route::get('draft-news/edit/{id}', [UserController::class, 'editNews'])->name('news.edit');
+        Route::post('news-form/update/{id}', [UserController::class, 'updateNews'])->name('news.update');
+        Route::get('news-form/publish/{id}', [UserController::class, 'publishNews'])->name('news.publish');
+
+        Route::get('paid-news/{id}', [PaymentController::class, 'paidNewsFrom'])->name('paidNewsForm');
+        Route::post('payment/get-order', [PaymentController::class, 'getOrderId'])->name('payment.getOrderId');
+        Route::post('payment/verification', [PaymentController::class, 'verification'])->name('payment.verification');
 
         Route::get('draft-releases', [UserController::class, 'myDraftReleases'])->name('user.draft_releases');
         Route::get('press-releases', [UserController::class, 'myPressReleases'])->name('user.press_releases');

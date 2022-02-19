@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="{{ url('user/images/favicon.ico') }}" />
     <title>PRNewsland | Dashboard</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="stylesheet" href="{{ asset('user/assets/icons/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/assets/css/base.css') }}">
     <link rel="stylesheet" href="{{ asset('user/assets/css/style.css') }}">
@@ -36,6 +38,14 @@
     $.validate({
         scrollToTopOnError: false,
         modules: 'security'
+    });
+</script>
+<script type="text/javascript">
+    var $app_url = "{{ url('/') }}";
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
     });
 </script>
 @yield('footer_scripts')

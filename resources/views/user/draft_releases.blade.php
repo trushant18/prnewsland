@@ -16,17 +16,13 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-5">Recently drafted press releases
-                            <a class="float-right btn btn-primary btn-sm" href="{{ route('user.dashboard') }}">Submit
-                                press releases</a></h4>
                         @if(count($news_list) > 0)
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
                                         <th>Title</th>
-                                        <th>Publish date</th>
-                                        <th>Dateline City</th>
-                                        <th>Category</th>
+                                        <th>Is Free?</th>
                                         <th>Status</th>
                                     </tr>
                                     </thead>
@@ -34,11 +30,17 @@
                                     @foreach($news_list as $news)
                                         <tr>
                                             <td>{{ $news->title }}</td>
-                                            <td>{{ formatDate($news->created_at) }}</td>
-                                            <td>{{ $news->city }}</td>
-                                            <td>{{ \App\Models\News::CATEGORIES[$news->category] }}</td>
+                                            <td>{{ ($news->is_free == 1) ? 'Yes' : 'No' }}</td>
                                             <td>
-                                                <label class="badge badge-warning">Pending</label>
+                                                <a class="btn btn-primary btn-sm" href="{{ route('news.edit', $news->id) }}">Edit</a>
+                                                @if(($news->is_free == 0) && ($news->payment_status == 1))
+                                                    <a class="btn btn-info btn-sm" href="javascript:;">Payment Done</a>
+                                                @endif
+                                                @if(($news->is_free == 0) && ($news->payment_status == 0))
+                                                    <a class="btn btn-warning btn-sm" href="{{ route('paidNewsForm', $news->id) }}">Payment Pending</a>
+                                                @else
+                                                    <a class="btn btn-success btn-sm" href="{{ route('news.publish', $news->id) }}">Publish</a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -52,7 +54,7 @@
                             </nav>
                         @else
                             <div class="row justify-content-center">
-                                <div class="col-sm-12 ">
+                                <div class="col-sm-12 pt-5">
                                     No Record Found.
                                 </div>
                             </div>

@@ -223,70 +223,37 @@
             </div><!--pt-logos-v8 end-->
         </div>
     </section><!--partners-v8-sec end-->
-
-    <section class="blog-section-v7 v8">
-        <div class="container">
-            <div class="title-v8 text-center wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0ms">
-                <h2>Latest Articles</h2>
-            </div><!--title-v8 end-->
-            <div class="blog-posts-v7">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="blog-post-v7">
-                            <div class="blog-thumbnail">
-                                <img src="{{ url('front/assets/img/blog4.jpg') }}" alt="" class="w-100">
+    @if(count($latest_news) > 0)
+        <section class="blog-section-v7 v8">
+            <div class="container">
+                <div class="title-v8 text-center wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="0ms">
+                    <h2>Latest Articles</h2>
+                </div><!--title-v8 end-->
+                <div class="blog-posts-v7">
+                    <div class="row">
+                        @foreach($latest_news as $news)
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="blog-post-v7">
+                                    <div class="blog-thumbnail">
+                                        <img src="{{ showNewsImage($news->image) }}" alt="" class="w-100">
+                                    </div>
+                                    <div class="blog-info">
+                                        <ul class="meta">
+                                            <li>{{ \App\Models\News::CATEGORIES[$news->category] }}</li>
+                                            <li>{{ formatDate($news->created_at, 'M d, Y') }}</li>
+                                        </ul>
+                                        <h2><a href="{{ route('news.detail', $news->slug) }}" title="">{{ $news->title }}</a></h2>
+                                        {{--<ul class="meta2">
+                                            <li><i class="lni lni-comments"></i> 25</li>
+                                            <li><i class="lni lni-eye"></i> 32.6K</li>
+                                        </ul>--}}
+                                    </div>
+                                </div><!--blog-post-v7 end-->
                             </div>
-                            <div class="blog-info">
-                                <ul class="meta">
-                                    <li><a href="#" title="">tips</a></li>
-                                    <li><a href="#" title="">May 17, 2020</a></li>
-                                </ul>
-                                <h2><a href="#" title="">How to optimization cost for GG Ads?</a></h2>
-                                <ul class="meta2">
-                                    <li><i class="lni lni-comments"></i> 25</li>
-                                    <li><i class="lni lni-eye"></i> 32.6K</li>
-                                </ul>
-                            </div>
-                        </div><!--blog-post-v7 end-->
+                        @endforeach
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="blog-post-v7">
-                            <div class="blog-thumbnail">
-                                <img src="{{ url('front/assets/img/blog5.jpg') }}" alt="" class="w-100">
-                            </div>
-                            <div class="blog-info">
-                                <ul class="meta">
-                                    <li><a href="#" title="">community </a></li>
-                                    <li><a href="#" title="">apr 28, 2020</a></li>
-                                </ul>
-                                <h2><a href="#" title="">Workflow Strategy</a></h2>
-                                <ul class="meta2">
-                                    <li><i class="lni lni-comments"></i> 4</li>
-                                    <li><i class="lni lni-eye"></i> 7.2K</li>
-                                </ul>
-                            </div>
-                        </div><!--blog-post-v7 end-->
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="blog-post-v7">
-                            <div class="blog-thumbnail">
-                                <img src="{{ url('front/assets/img/blog6.jpg') }}" alt="" class="w-100">
-                            </div>
-                            <div class="blog-info">
-                                <ul class="meta">
-                                    <li><a href="#" title="">life style</a></li>
-                                    <li><a href="#" title="">apr 8, 2020</a></li>
-                                </ul>
-                                <h2><a href="#" title="">Elena Holson Shared: Marketing Vision 2020</a></h2>
-                                <ul class="meta2">
-                                    <li><i class="lni lni-comments"></i> 18</li>
-                                    <li><i class="lni lni-eye"></i> 57.4K</li>
-                                </ul>
-                            </div>
-                        </div><!--blog-post-v7 end-->
-                    </div>
-                </div>
-            </div><!--blog-posts-v7 end-->
-        </div>
-    </section>
+                </div><!--blog-posts-v7 end-->
+            </div>
+        </section>
+    @endif
 @endsection

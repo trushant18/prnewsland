@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
 use App\Models\Page;
 use App\Models\Plan;
 
@@ -14,7 +15,8 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('front.home.index');
+        $latest_news = News::orderBy('id', 'DESC')->where('status', 1)->get();
+        return view('front.home.index', compact('latest_news'));
     }
 
     public function getPageDetails($page_type)

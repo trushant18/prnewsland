@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\News;
 
 class BlogController extends Controller
 {
@@ -20,5 +21,20 @@ class BlogController extends Controller
             return redirect()->route('home');
         }
         return view('front.blogs.single', compact('blog'));
+    }
+
+    public function getNewsList()
+    {
+        $news_list = News::where('status', 1)->paginate(12);
+        return view('front.news.all', compact('news_list'));
+    }
+
+    public function getNewsDetails($slug)
+    {
+        $news = News::where('slug', $slug)->where('status', 1)->first();
+        if (is_null($news)){
+            return redirect()->route('home');
+        }
+        return view('front.news.single', compact('news'));
     }
 }

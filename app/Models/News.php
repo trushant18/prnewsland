@@ -20,7 +20,7 @@ class News extends Model
 
     protected $table = 'news';
 
-    protected $fillable = ['user_id', 'title', 'slug', 'category', 'city', 'country', 'content', 'image', 'status', 'is_free', 'price'];
+    protected $fillable = ['user_id', 'title', 'slug', 'category', 'city', 'country', 'content', 'image', 'status', 'is_free', 'payment_status', 'price'];
 
     public function userDetails(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
