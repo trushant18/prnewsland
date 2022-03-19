@@ -11,7 +11,7 @@
             </nav>
         </div>
         <!-- table -->
-
+        @include('admin.layout.partials.flash_messages')
         <div class="row">
             <div class="col-12 grid-margin">
                 <div class="card">
