@@ -28,6 +28,9 @@
                                 <button type="button" onclick="launchBOLT(); return false;" class="btn btn-primary mr-2">Pay {{ $news->price }}
                                 </button>
                             </div>
+                            <div class="col-md-12 text-right" id="payPalBtn" style="display: none;">
+                                <a href="{{ route('make.payment', $news->id) }}" class="btn btn-primary mr-2">Pay {{ $news->price }}with PayPal</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -41,10 +44,8 @@
 
         $('input[type=radio][name=payment_method]').change(function() {
             $("#razorpayBtn").toggle($(this).val() == 'razorpay');
-            $("#paypalBtn").toggle($(this).val() == 'paypal');
+            $("#payPalBtn").toggle($(this).val() == 'paypal');
         });
-
-
 
         function launchBOLT() {
             $.ajax({

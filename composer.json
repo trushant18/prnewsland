@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "laravelcollective/html": "^6.2",
-        "razorpay/razorpay": "^2.7"
+        "razorpay/razorpay": "^2.7",
+        "srmklive/paypal": "^3.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

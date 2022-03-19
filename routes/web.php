@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\DashboardController;
 use App\Http\Controllers\Front\PaymentController;
+use App\Http\Controllers\Front\PayPalPaymentController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactRequestController;
@@ -70,6 +71,10 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('paid-news/{id}', [PaymentController::class, 'paidNewsFrom'])->name('paidNewsForm');
         Route::post('payment/get-order', [PaymentController::class, 'getOrderId'])->name('payment.getOrderId');
         Route::post('payment/verification', [PaymentController::class, 'verification'])->name('payment.verification');
+
+        Route::get('handle-payment/{news_id}', [PayPalPaymentController::class, 'handlePayment'])->name('make.payment');
+        Route::get('cancel-payment/{news_id}', [PayPalPaymentController::class, 'paymentCancel'])->name('cancel.payment');
+        Route::get('payment-success/{news_id}', [PayPalPaymentController::class, 'paymentSuccess'])->name('success.payment');
 
         Route::get('draft-releases', [UserController::class, 'myDraftReleases'])->name('user.draft_releases');
         Route::get('press-releases', [UserController::class, 'myPressReleases'])->name('user.press_releases');
