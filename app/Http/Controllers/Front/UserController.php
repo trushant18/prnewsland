@@ -57,8 +57,8 @@ class UserController extends Controller
     {
         $user = auth()->user();
         $paid_news = false;
-        $price = 0;
-        return view('user.news_form', compact('user', 'paid_news', 'price'));
+        $plan_id = null;
+        return view('user.news_form', compact('user', 'paid_news', 'plan_id'));
     }
 
     public function newsCreateFormPaid($plan_id)
