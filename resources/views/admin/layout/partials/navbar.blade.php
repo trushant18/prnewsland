@@ -33,7 +33,7 @@
                 </a>
                 <div class="sub-item">
                     <ul>
-                        <li><a href="#">Payment History</a></li>
+                        <li><a href="{{ route('admin.news.payment_history') }}">Payment History</a></li>
                         <li><a href="{{ route('admin.contact_requests') }}">Contact Requests</a></li>
                     </ul>
                 </div>

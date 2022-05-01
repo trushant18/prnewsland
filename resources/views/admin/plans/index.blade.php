@@ -28,8 +28,9 @@
                 <thead>
                 <tr>
                     <th class="wd-40p">Title</th>
-                    <th class="wd-40p">Price</th>
-                    <th class="wd-10p">Actions</th>
+                    <th class="wd-20p">Price ($)</th>
+                    <th class="wd-20p">Price (₹)</th>
+                    <th class="wd-20p">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,7 @@
                     <tr>
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->price }}</td>
+                        <td>{{ $item->inr_price }}</td>
                         <td>
                             <a href="{{ route('admin.plan.edit', $item->id) }}" class="btn btn-info btn-sm" title="Edit">
                                 <div><i class="fa fa-edit"></i></div>

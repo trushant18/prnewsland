@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="is_free" value="{{ $paid_news ? 0 : 1 }}">
-                                <input type="hidden" name="price" value="{{ $price }}">
+                                <input type="hidden" name="plan_id" value="{{ $plan_id }}">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Upload Featured Image (main)</label>

@@ -60,11 +60,19 @@
             </div>
             <div class="row no-gutters">
                 <div class="col-5 col-sm-4">
+                    Plan:
+                </div>
+                <div class="col-7 col-sm-8">
+                    {!! $news->planDetails->title ?? "- - -" !!}
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col-5 col-sm-4">
                     Image:
                 </div>
                 <div class="col-7 col-sm-8">
                     @if(isset($news->image))
-                        <img src="{{ showNewsImage($news->image) }}" alt="{{ $news->title }}">
+                        <img src="{{ showNewsImage($news->image) }}" alt="{{ $news->title }}" height="100px">
                     @else
                     @endif
                 </div>

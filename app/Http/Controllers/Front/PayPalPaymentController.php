@@ -27,7 +27,7 @@ class PayPalPaymentController extends Controller
                 0 => [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => $newsDetails->price
+                        "value" => $newsDetails->planDetails->price
                     ]
                 ]
             ]

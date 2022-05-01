@@ -31,8 +31,16 @@
                                title="View">
                                 <i class="fa fa-eye"></i>
                             </a>
+                            <a href="{{ route("admin.news.edit",$item->id) }}" class="btn btn-primary btn-sm"
+                               title="Edit">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a href="javascript:;" onclick="confirm('{{ route("admin.news.delete",$item->id) }}', 'Are you sure you want to delete?')" class="btn btn-danger btn-sm"
+                               title="Delete">
+                                <i class="fa fa-trash"></i>
+                            </a>
                             @if($item->status == 0)
-                                <a href="javascript:;" onclick="confirm('{{ route("admin.news.approve",$item->id) }}')" class="btn btn-success btn-sm"
+                                <a href="javascript:;" onclick="confirm('{{ route("admin.news.approve",$item->id) }}', 'Are you sure you want to approve?')" class="btn btn-success btn-sm"
                                    title="Approve">
                                     <div>Approve</div>
                                 </a>
@@ -96,10 +104,10 @@
             });
         });
 
-        function confirm(url){
+        function confirm(url, message){
             bootbox.confirm({
                 size: 'large',
-                message: "Are you sure you want to approve?",
+                message: message,
                 buttons: {
                     confirm: {
                         label: "Yes",

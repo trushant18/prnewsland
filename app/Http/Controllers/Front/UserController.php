@@ -66,8 +66,8 @@ class UserController extends Controller
         $plan = Plan::findOrFail($plan_id);
         $user = auth()->user();
         $paid_news = true;
-        $price = $plan->price;
-        return view('user.news_form', compact('user', 'paid_news', 'price'));
+        $plan_id = $plan->id;
+        return view('user.news_form', compact('user', 'paid_news', 'plan_id'));
     }
 
     public function storeNews(Request $request): string

@@ -16,4 +16,8 @@ class Transaction extends Model
     {
         return $this->hasOne(User::class, 'id', 'user_id');
     }
+    public function newsDetails(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(News::class, 'id', 'news_id');
+    }
 }

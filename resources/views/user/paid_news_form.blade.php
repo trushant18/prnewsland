@@ -25,11 +25,11 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-right" id="razorpayBtn">
-                                <button type="button" onclick="launchBOLT(); return false;" class="btn btn-primary mr-2">Pay {{ $news->price }}
+                                <button type="button" onclick="launchBOLT(); return false;" class="btn btn-primary mr-2">Pay {{ $news->planDetails->price }} $
                                 </button>
                             </div>
                             <div class="col-md-12 text-right" id="payPalBtn" style="display: none;">
-                                <a href="{{ route('make.payment', $news->id) }}" class="btn btn-primary mr-2">Pay {{ $news->price }}with PayPal</a>
+                                <a href="{{ route('make.payment', $news->id) }}" class="btn btn-primary mr-2">Pay {{ $news->planDetails->price }} $</a>
                             </div>
                         </div>
                     </div>

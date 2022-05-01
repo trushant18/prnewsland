@@ -13,5 +13,5 @@ class Plan extends Model
 
     protected $table = 'plans';
 
-    protected $fillable = ['title', 'content', 'price'];
+    protected $fillable = ['title', 'content', 'price', 'inr_price'];
 }

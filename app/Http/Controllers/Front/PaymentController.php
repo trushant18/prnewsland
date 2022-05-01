@@ -34,7 +34,7 @@ class PaymentController extends Controller
                     $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
                     $orderData = [
                         'receipt' => "Txn" . rand(10, 99) . date("YmdHis"),
-                        'amount' => $news->price * 100,
+                        'amount' => $news->planDetails->inr_price * 100,
                         'currency' => 'INR',
                         'payment_capture' => 1
                     ];
@@ -86,7 +86,7 @@ class PaymentController extends Controller
                         'details' => json_encode($payment->toArray())
                     ]);
                     DB::commit();
-                    return redirect()->route('user.press_releases')->with('error', 'Payment Captured Successfully');
+                    return redirect()->route('user.press_releases')->with('success', 'Payment Captured Successfully');
                 }
                 return redirect()->route('paidNewsFrom', $requestData['news_id'])->with('error', 'something went wrong');
             } catch (\Exception $e) {

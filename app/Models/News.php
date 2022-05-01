@@ -20,10 +20,14 @@ class News extends Model
 
     protected $table = 'news';
 
-    protected $fillable = ['user_id', 'title', 'slug', 'category', 'city', 'country', 'content', 'image', 'status', 'is_free', 'payment_status', 'price'];
+    protected $fillable = ['user_id', 'title', 'slug', 'category', 'city', 'country', 'content', 'image', 'status', 'is_free', 'payment_status', 'plan_id'];
 
     public function userDetails(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+    public function planDetails(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Plan::class, 'id', 'plan_id');
     }
 }

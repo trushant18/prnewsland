@@ -1,15 +1,21 @@
 <div class="form-layout">
     <div class="row mg-b-25">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="form-group">
                 <label class="form-control-label">Title: <span class="tx-danger">*</span></label>
                 {!! Form::text('title', $plan->title ?? old('title'), ['class' => 'form-control', 'placeholder' => 'Enter title', 'data-validation' => 'required']) !!}
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="form-group">
-                <label class="form-control-label">Price: <span class="tx-danger">*</span></label>
+                <label class="form-control-label">Price (USD): <span class="tx-danger">*</span></label>
                 {!! Form::text('price', $plan->price ?? old('price'), ['class' => 'form-control', 'placeholder' => 'Enter price', 'data-validation' => 'required number']) !!}
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="form-group">
+                <label class="form-control-label">Price (INR): <span class="tx-danger">*</span></label>
+                {!! Form::text('inr_price', $plan->inr_price ?? old('inr_price'), ['class' => 'form-control', 'placeholder' => 'Enter price', 'data-validation' => 'required number']) !!}
             </div>
         </div>
         <div class="col-lg-12">

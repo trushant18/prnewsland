@@ -39,8 +39,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     /*NEWS ROUTES*/
     Route::get('news', [NewsController::class, 'index'])->name('news');
     Route::get('news/details/{id}', [NewsController::class, 'details'])->name('news.details');
+    Route::get('news/edit/{id}', [NewsController::class, 'edit'])->name('news.edit');
+    Route::post('news/update/{id}', [NewsController::class, 'update'])->name('news.update');
     Route::get('news/approve/{id}', [NewsController::class, 'approve'])->name('news.approve');
+    Route::get('news/delete/{id}', [NewsController::class, 'delete'])->name('news.delete');
     Route::post('news/reject', [NewsController::class, 'reject'])->name('news.reject');
+    Route::get('news/payment-history', [NewsController::class, 'getPaymentHistory'])->name('news.payment_history');
 
     /*EMAIL TEMPLATE ROUTES*/
     Route::get('email_templates', [EmailTemplateController::class, 'index'])->name('email_templates');
